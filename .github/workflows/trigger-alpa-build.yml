@@ -15,6 +15,6 @@ jobs:
           await github.rest.actions.createWorkflowDispatch({
             owner: 'alpa-projects',
             repo: 'alpa',
-            workflow_id: 'main.yml',
+            workflow_id: 'test_build.yml',
             ref: 'hao-wheel-2'
           })
