@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Hello world action step
+      - name: docker build
         run: |
-           docker build -t test-image test-alpa-ci/Dockerfile
+          sudo docker build -t test-image .
 #          docker run --tmpfs /build:exec --rm -v $(pwd)/tmp:/tmp test-image
