@@ -3,11 +3,11 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: [self-hosted, test]
-    name: A job to say hello
+    name: Run docker commands in github runners
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Hello world action step
         run: |
           docker build -t test-image test-alpa-ci/Dockerfile
-          docker run --tmpfs /build:exec --rm -v $(pwd)/tmp:/tmp test-image
+#          docker run --tmpfs /build:exec --rm -v $(pwd)/tmp:/tmp test-image
