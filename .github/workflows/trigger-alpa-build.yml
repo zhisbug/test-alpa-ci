@@ -17,17 +17,24 @@ jobs:
   dispatch:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/github-script@v6
-      with:
-        github-token: ${{ secrets.PAT_TOKEN }}
-        script: |
-          await github.rest.actions.createWorkflowDispatch({
-            owner: 'zhisbug',
-            repo: 'test-alpa-ci-runner',
-            workflow_id: 'test-build-dispatch.yml',
-            ref: 'main'
-            inputs: {
-              tensorflow-alpa-branch: ${{ github.event.inputs.tensorflow-alpa-branch }}
-              alpa-branch: ${{ github.event.inputs.tensorflow-alpa-branch }}
-            },
-          })
+      - run: |
+          echo "TensorFlow Alpa branch: $TF_BRANCH"
+          echo "Alpa branch: $ALPA_BRANCH"
+        env:
+          TF_BRANCH: ${GITHUB_REF##*/}
+          ALPA_BRANCH: ${{github.event.inputs.alpa-branch}}
+          
+      - uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.PAT_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: 'zhisbug',
+              repo: 'test-alpa-ci-runner',
+              workflow_id: 'test-build-dispatch.yml',
+              ref: 'main'
+              inputs: {
+                tensorflow-alpa-branch: ${{ github.event.inputs.tensorflow-alpa-branch }}
+                alpa-branch: ${{ github.event.inputs.tensorflow-alpa-branch }}
+              },
+            })
