@@ -29,4 +29,7 @@ jobs:
               repo: 'test-alpa-ci-runner',
               workflow_id: 'test-build-dispatch.yml',
               ref: '${{github.event.inputs.alpa}}',
+              inputs: {
+                tensorflow: '${{github.ref}}'
+              },
             })
