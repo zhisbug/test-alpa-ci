@@ -1,9 +1,18 @@
 # This is a test workflow to trigger Alpa CI
 name: Trigger Alpa Build workflow
-on:
-  pull_request:
-    branches: [ master ]
 
+on:
+  workflow_dispatch：
+    inputs:
+      tensorflow-alpa-branch: 
+        description: 'TensorFlow-alpa branch to build and test'
+        required: true
+        default: 'master'
+      alpa-branch:
+        description: 'Alpa branch to build and test'
+        required: true
+        default: 'main'
+      
 jobs:
   dispatch:
     runs-on: ubuntu-latest
@@ -17,4 +26,8 @@ jobs:
             repo: 'test-alpa-ci-runner',
             workflow_id: 'test-build-dispatch.yml',
             ref: 'main'
+            inputs: {
+              tensorflow-alpa-branch: ${{ github.event.inputs.tensorflow-alpa-branch }}
+              alpa-branch: ${{ github.event.inputs.tensorflow-alpa-branch }}
+            },
           })
