@@ -2,7 +2,7 @@
 name: Trigger Alpa Build workflow
 
 on:
-  workflow_dispatch：
+  workflow_dispatch:
     inputs:
       tensorflow-alpa-branch: 
         description: 'TensorFlow-alpa branch to build and test'
