@@ -4,7 +4,7 @@ name: Trigger Alpa Build workflow
 on:
   workflow_dispatch:
     inputs:
-      alpa-branch-name:
+      alpa:
         description: 'Alpa branch to test'
         required: true
         default: 'main'
@@ -18,7 +18,7 @@ jobs:
           echo "Alpa branch: $ALPA_BRANCH"
         env:
           TF_BRANCH: ${{github.ref}}
-          ALPA_BRANCH: ${{github.event.inputs.alpa-branch-name}}
+          ALPA_BRANCH: ${{github.event.inputs.alpa}}
           
       - uses: actions/github-script@v6
         with:
@@ -28,8 +28,8 @@ jobs:
               owner: 'zhisbug',
               repo: 'test-alpa-ci-runner',
               workflow_id: 'test-build-dispatch.yml',
-              ref: '${{github.event.inputs.alpa-branch-name}}',
+              ref: '${{github.event.inputs.alpa}}',
               inputs: {
-                'tensorflow-alpa-branch-name': '${{github.ref}}'
+                'tensorflow': '${{github.ref}}'
               },
             })
