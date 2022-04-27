@@ -18,7 +18,7 @@ jobs:
           echo "Alpa branch: $ALPA_BRANCH"
         env:
           TF_BRANCH: ${{github.ref}}
-          ALPA_BRANCH: ${{github.event.inputs.alpa-branch}}
+          ALPA_BRANCH: ${{github.event.inputs.alpa-branch-name}}
           
       - uses: actions/github-script@v6
         with:
