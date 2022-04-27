@@ -30,7 +30,6 @@ jobs:
               workflow_id: 'test-build-dispatch.yml',
               ref: $ALPA_BRANCH
               inputs: {
-                tensorflow-alpa-branch-name: ${TF_BRANCH##*/}
-                alpa-branch-name: ${{ github.event.inputs.alpa-branch-name }}
+                "tensorflow-alpa-branch-name": "${TF_BRANCH##*/}"
               }
             })
