@@ -8,7 +8,11 @@ on:
         description: 'Alpa branch to test'
         required: true
         default: 'main'
-      
+        
+env:
+  TF_BRANCH: ${{github.ref}}
+  ALPA_BRANCH: ${{github.event.inputs.alpa}}
+
 jobs:
   dispatch:
     runs-on: ubuntu-latest
@@ -16,9 +20,6 @@ jobs:
       - run: |
           echo "TensorFlow Alpa branch: ${TF_BRANCH##*/}"
           echo "Alpa branch: $ALPA_BRANCH"
-        env:
-          TF_BRANCH: ${{github.ref}}
-          ALPA_BRANCH: ${{github.event.inputs.alpa}}
           
       - uses: actions/github-script@v6
         with:
