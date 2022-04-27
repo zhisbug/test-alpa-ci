@@ -28,5 +28,8 @@ jobs:
               owner: 'zhisbug',
               repo: 'test-alpa-ci-runner',
               workflow_id: 'test-build-dispatch.yml',
-              ref: '${{github.event.inputs.alpa-branch-name}}'
+              ref: '${{github.event.inputs.alpa-branch-name}}',
+              inputs: {
+                tensorflow-alpa-branch-name: ${{github.ref}}
+              },
             })
