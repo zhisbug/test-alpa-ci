@@ -30,3 +30,6 @@ jobs:
               workflow_id: 'test-build-dispatch.yml',
               ref: $ALPA_BRANCH
             })
+        env:
+          TF_BRANCH: ${{github.ref}}
+          ALPA_BRANCH: ${{github.event.inputs.alpa-branch-name}}
