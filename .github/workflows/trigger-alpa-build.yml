@@ -4,12 +4,8 @@ name: Trigger Alpa Build workflow
 on:
   workflow_dispatch:
     inputs:
-      tensorflow-alpa-branch: 
-        description: 'TensorFlow-alpa branch to build and test'
-        required: true
-        default: 'master'
-      alpa-branch:
-        description: 'Alpa branch to build and test'
+      alpa-branch-name:
+        description: 'Alpa branch to test'
         required: true
         default: 'main'
       
@@ -32,9 +28,9 @@ jobs:
               owner: 'zhisbug',
               repo: 'test-alpa-ci-runner',
               workflow_id: 'test-build-dispatch.yml',
-              ref: 'main'
+              ref: $ALPA_BRANCH
               inputs: {
-                tensorflow-alpa-branch: ${{ github.event.inputs.tensorflow-alpa-branch }}
-                alpa-branch: ${{ github.event.inputs.tensorflow-alpa-branch }}
+                tensorflow-alpa-branch-name: ${TF_BRANCH##*/}
+                alpa-branch-name: ${{ github.event.inputs.alpa-branch-name }}
               },
             })
