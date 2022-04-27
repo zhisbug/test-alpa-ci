@@ -32,5 +32,5 @@ jobs:
               inputs: {
                 tensorflow-alpa-branch-name: ${TF_BRANCH##*/}
                 alpa-branch-name: ${{ github.event.inputs.alpa-branch-name }}
-              },
+              }
             })
