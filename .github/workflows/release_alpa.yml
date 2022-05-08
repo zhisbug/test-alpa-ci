@@ -41,6 +41,7 @@ jobs:
           ls -ltr dist/
 #          twine upload --repository testpypi dist/*
 
+
   update-version:
     runs-on: [ubuntu-latest]
     needs: release-alpa
@@ -63,11 +64,11 @@ jobs:
           branch: actions/version-bump
           force: true
 
-    - name: Create version-bump PR
-      uses: repo-sync/pull-request@v2
-      with:
-        github_token: ${{ secrets.PAT_TOKEN }}
-        source_branch: "actions/version-bump"
-        destination_branch: "master" # change to main
-        pr_title: "Bumping VERSION file due to recent release"
-        pr_body: "*Automated PR*: This should update the candidate version. Please delete source branch upon merge"
+      - name: Create version-bump PR
+        uses: repo-sync/pull-request@v2
+        with:
+          github_token: ${{ secrets.PAT_TOKEN }}
+          source_branch: "actions/version-bump"
+          destination_branch: "master" # change to main
+          pr_title: "Bumping VERSION file due to recent release"
+          pr_body: "*Automated PR*: This should update the candidate version. Please delete source branch upon merge"
