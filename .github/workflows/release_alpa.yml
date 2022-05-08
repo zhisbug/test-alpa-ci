@@ -35,7 +35,7 @@ jobs:
 
       - name: Build and publish
         run: |
-          export VERSION=$(./GENVER --pep440)
+          export VERSION=$(bash GENVER --pep440)
           echo $VERSION
           python setup.py sdist bdist_wheel
           ls -ltr dist/
