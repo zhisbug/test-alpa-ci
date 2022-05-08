@@ -39,7 +39,7 @@ jobs:
           echo $VERSION
           python setup.py sdist bdist_wheel
           ls -ltr dist/
-#          twine upload --repository testpypi dist/*
+          twine upload --repository testpypi dist/*
 
 
   update-version:
