@@ -74,6 +74,9 @@ fi
 # Strip the leading 'v' from the git describe version.
 git_ver=$(expr "${git_ver}" : v*'\(.*\)')
 
+echo "can_version ${can_ver}"
+echo "get_version ${git_ver}"
+
 if expr "${git_ver}" : '.*-[0-9]*-g.*'  >/dev/null
 then
     # Branch is in the developing state (e.g., there have been commits
