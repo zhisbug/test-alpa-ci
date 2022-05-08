@@ -68,6 +68,6 @@ jobs:
       with:
         github_token: ${{ secrets.PAT_TOKEN }}
         source_branch: "actions/version-bump"
-        destination_branch: "master"
+        destination_branch: "master" # change to main
         pr_title: "Bumping VERSION file due to recent release"
         pr_body: "*Automated PR*: This should update the candidate version. Please delete source branch upon merge"
