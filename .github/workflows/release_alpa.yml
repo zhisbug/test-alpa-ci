@@ -63,5 +63,11 @@ jobs:
           branch: actions/version-bump
           force: true
 
-      - name: Create version-bump PR
-        uses: repo-sync
+    - name: Create version-bump PR
+      uses: repo-sync/pull-request@v2
+      with:
+        github_token: ${{ secrets.PAT_TOKEN }}
+        source_branch: "actions/version-bump"
+        destination_branch: "master"
+        pr_title: "Bumping VERSION file due to recent release"
+        pr_body: "*Automated PR*: This should update the candidate version. Please delete source branch upon merge"
