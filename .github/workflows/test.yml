@@ -1,4 +1,4 @@
-name: Release Alpa
+name: Test Release Alpa
 
 on:
   release:
